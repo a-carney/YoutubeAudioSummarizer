@@ -2,3 +2,4 @@
 target
 video-summaries.db
 spring-shell.log
+.gitignore
