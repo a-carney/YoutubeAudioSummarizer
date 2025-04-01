@@ -3,3 +3,4 @@ target
 video-summaries.db
 spring-shell.log
 .gitignore
+.dev.sh
