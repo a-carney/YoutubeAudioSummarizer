@@ -28,14 +28,13 @@ public class YtsRepositoryTest {
     @Test
     public void testInitDatabase() {
         // Verify that the database initialization SQL is executed
-        verify(mockJdbcTemplate).execute(
-                "CREATE TABLE IF NOT EXISTS videos (" +
-                        "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "url TEXT NOT NULL UNIQUE, " +
-                        "summary TEXT, " +
-                        "created_at TEXT NOT NULL" +
-                        ")"
-        );
+        verify(mockJdbcTemplate).execute("""
+            CREATE TABLE IF NOT EXISTS videos (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                url TEXT NOT NULL UNIQUE,
+                summary TEXT,
+                created_at TEXT NOT NULL )
+        """);
     }
 
 

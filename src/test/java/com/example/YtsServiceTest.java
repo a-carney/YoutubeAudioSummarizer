@@ -11,8 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import static com.example.TestConstants.FAKE_SUMMARY;
-import static com.example.TestConstants.VID;
+import static com.example.TestConstants.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -36,7 +35,6 @@ public class YtsServiceTest {
     }
 
 
-//
     @Test
     public void testIsValidYoutubeUrlOnValid() {
         assertTrue(service.isValidYoutubeUrl("https://www.youtube.com/watch?v=" + VID));
@@ -45,10 +43,9 @@ public class YtsServiceTest {
     }
     @Test
     public void testIsValidYoutubeUrlOnInvalid() {
-        assertEquals(true, service.isValidYoutubeUrl(null));
-        assertEquals(true, service.isValidYoutubeUrl(""));
-        assertEquals(true, service.isValidYoutubeUrl("https://www.google.com"));
-
+        assertTrue(service.isValidYoutubeUrl(null));
+        assertTrue(service.isValidYoutubeUrl(""));
+        assertTrue(service.isValidYoutubeUrl("https://www.google.com"));
     }
 
 
@@ -70,12 +67,10 @@ public class YtsServiceTest {
 
     @Test
     public void testGetSummaryAsDto_InvalidUrl() {
-        String invalidUrl = "invalid-url";
+        YtsDTO result = service.getSummaryAsDto(INVALID_URL);
 
-        YtsDTO result = service.getSummaryAsDto(invalidUrl);
-
-        assertEquals(invalidUrl, result.getUrl());
-        assertTrue(result.getSummary().startsWith("Invalid YouTube URL"));
+        assertEquals(INVALID_URL, result.getUrl());
+        assertTrue(result.getSummary().startsWith(INVALID_URL));
     }
 }
 
