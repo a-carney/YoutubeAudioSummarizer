@@ -20,8 +20,14 @@ mvn clean package
 ```
 **Run**
 ```bash
-CLAUDE_API_KEY=your-api-key java -jar target/video-summary.jar https://www.youtube.com/watch?v=example
+mvn spring-boot:run 	# opens dev shell (easiest way to run) 
 ```
+
+**Dev Shell**
+```bash
+summarize <yt-link>
+```
+
 
 ## Process  
 1. Download audio
