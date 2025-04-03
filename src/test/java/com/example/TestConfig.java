@@ -1,6 +1,6 @@
 package com.example;
 
-public class TestConstants {
+public class TestConfig {
 
 
     public static final String VID = "jNQXAC9IVRw";
