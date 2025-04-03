@@ -1,45 +1,42 @@
 package com.example;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@RunWith(MockitoJUnitRunner.class)
-public class YtsRepositoryTest {
+@ExtendWith(MockitoExtension.class)
+class YtsRepositoryTest {
 
     @Mock
     private JdbcTemplate mockJdbcTemplate;
 
     private YtsRepository ytsRepository;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         ytsRepository = new YtsRepository(mockJdbcTemplate);
     }
 
     @Test
-    public void testInitDatabase() {
-        // Verify that the database initialization SQL is executed
-        verify(mockJdbcTemplate).execute("""
-            CREATE TABLE IF NOT EXISTS videos (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                url TEXT NOT NULL UNIQUE,
-                summary TEXT,
-                created_at TEXT NOT NULL )
-        """);
+    void testInitDatabase() {
+        verify(mockJdbcTemplate).execute("CREATE TABLE IF NOT EXISTS " +
+                "videos (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "url TEXT NOT NULL UNIQUE, " +
+                "summary TEXT, " +
+                "created_at TEXT NOT NULL)");
     }
 
 
     @Test
-    public void testSave_NewVideo() {
+    void testSave_NewVideo() {
         YtsVideo newVideo = new YtsVideo("https://www.youtube.com/watch?v=test");
         newVideo.setSummary("Test summary");
 
@@ -59,7 +56,7 @@ public class YtsRepositoryTest {
     }
 
     @Test
-    public void testSave_ExistingVideo() {
+    void testSave_ExistingVideo() {
         YtsVideo existingVideo = new YtsVideo("https://www.youtube.com/watch?v=test");
         existingVideo.setId(1L);
         existingVideo.setSummary("Updated summary");

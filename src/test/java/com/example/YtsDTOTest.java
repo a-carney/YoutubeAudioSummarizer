@@ -1,20 +1,20 @@
 package com.example;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.example.TestConstants.FAKE_SUMMARY;
-import static com.example.TestConstants.FAKE_URL;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static com.example.TestConfig.FAKE_SUMMARY;
+import static com.example.TestConfig.FAKE_URL;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-@RunWith(MockitoJUnitRunner.class)
-public class YtsDTOTest {
+@ExtendWith(MockitoExtension.class)
+class YtsDTOTest {
 
 
     @Test
-    public void testFromEntity() {
+    void testFromEntity() {
         YtsVideo video = new YtsVideo(FAKE_URL);
         video.setId(1L);
         video.setSummary(FAKE_SUMMARY);
@@ -28,7 +28,7 @@ public class YtsDTOTest {
     }
 
     @Test
-    public void testToEntity() {
+    void testToEntity() {
         YtsDTO dto = new YtsDTO(FAKE_URL);
         dto.setId(1L);
         dto.setSummary(FAKE_SUMMARY);
@@ -42,7 +42,7 @@ public class YtsDTOTest {
     }
 
     @Test
-    public void testFromEntity_NullInput() {
+    void testFromEntity_NullInput() {
         assertNull(YtsDTO.fromEntity(null));
     }
 
