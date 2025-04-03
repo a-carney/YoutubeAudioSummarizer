@@ -1,16 +1,27 @@
 # YouTube Video Summarizer
 
-A simple audio-parsing command-line tool 
 
-## Prerequisites
 
+   for Claude
+2. Web Service (*In Development*)
+
+## Requirements
 - java 17+
 - maven
 - yt-dlp
 - whisper 
-- claude API key (Anthropic)
+- claude API key* (https://docs.anthropic.com/en/api/admin-api/apikeys/get-api-key)
 
- Build the project: `mvn clean package`
+**CLI mode only*
+
+
+## Process
+1. Download audio
+2. Transcribe with Whisper
+3. Get Summary from Claude 
+4. Output To Console
+
+
 
 ## File Tree
 ```bash
@@ -18,7 +29,10 @@ A simple audio-parsing command-line tool
 ├── pom.xml
 ├── README.md
 ├── spring-shell.log
-├── src
+├── public  
+│   ├── index.html
+│   ├── style.css
+│── src
 │   ├── main
 │   │   ├── java
 │   │   │   └── com
@@ -141,6 +155,7 @@ classDiagram
 
 ## Usage
 
+### CLI (Command Line Interface) 
 **Build**
 ```bash
 mvn clean package
@@ -155,12 +170,5 @@ mvn spring-boot:run 	# opens dev shell (easiest way to run)
 summarize <yt-link>
 ```
 
-
-## Process  
-1. Download audio
-2. Transcribe with Whisper
-3. Get Summary from Claude 
-4. Output To Console
-
-**Note:** will use db storage for already requested links
+### Web Service  *(In Development)*
 
