@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple YouTube Summary App</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- React and ReactDOM -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+
+    <!-- Babel for JSX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.21.2/babel.min.js"></script>
+
+    <style>
+    </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+    import React from "react";
+
+    function App() {
+        const [url, setUrl] = React.useState('');
+        const [loading, setLoading] = React.useState(false);
+        const [error, setError] = React.useState('');
+        const [summary, setSummary] = React.useState('');
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+
+            setError('');
+            setSummary('');
+
+            if (!url) {
+                setError('Please enter a YouTube URL');
+                return;
+            }
+
+            if (!url.includes('youtube.com') && !url.includes('youtu.be')) {
+                setError('Please enter a valid YouTube URL');
+                return;
+            }
+
+            setLoading(true);
+
+            setTimeout(() => {
+                setLoading(false);
+
+                setSummary(
+                    "THIS IS JUST A PLACEHOLDER FOR WHERE THE SUMMARY SHOULD BE"
+                );
+            }, 1500);
+        };
+
+        return (
+            <div className="container">
+                <div className="header">
+                    <h1>YouTube Video Summarizer</h1>
+                </div>
+
+                <div className="content">
+                    <form className="form" onSubmit={handleSubmit}>
+                        <label>
+                            <input
+                                type="text"
+                                className="input"
+                                placeholder="Enter YouTube URL"
+                                value={url}
+                                onChange={(e) => setUrl(e.target.value)}
+                            />
+                        </label>
+                        <button
+                            type="submit"
+                            className="button"
+                            disabled={loading}
+                        >
+                            {loading ? 'Processing...' : 'Summarize'}
+                        </button>
+                    </form>
+
+                    {error && <div className="error">{error}</div>}
+
+                    {loading && (
+                        <div className="loading">
+                            Analyzing video content, please wait...
+                        </div>
+                    )}
+
+                    {summary && (
+                        <div className="summary">
+                            <h2>Video Summary</h2>
+                            <div className="summary">{summary}</div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App/>);
+</script>
+</body>
+</html>
