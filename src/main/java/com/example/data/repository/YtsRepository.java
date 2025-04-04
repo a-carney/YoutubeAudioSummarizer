@@ -1,5 +1,6 @@
-package com.example;
+package com.example.data.repository;
 
+import com.example.data.model.YtsVideo;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

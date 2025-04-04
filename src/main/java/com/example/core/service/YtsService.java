@@ -1,5 +1,8 @@
-package com.example;
+package com.example.core.service;
 
+import com.example.api.dto.YtsDTO;
+import com.example.data.model.YtsVideo;
+import com.example.data.repository.YtsRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;

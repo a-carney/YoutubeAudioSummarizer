@@ -1,5 +1,6 @@
-package com.example;
+package com.example.api.cli;
 
+import com.example.core.service.YtsService;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;

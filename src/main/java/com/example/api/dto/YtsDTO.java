@@ -1,5 +1,6 @@
-package com.example;
+package com.example.api.dto;
 
+import com.example.data.model.YtsVideo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

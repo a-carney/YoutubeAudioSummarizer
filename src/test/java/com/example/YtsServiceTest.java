@@ -1,5 +1,9 @@
 package com.example;
 
+import com.example.api.dto.YtsDTO;
+import com.example.core.service.YtsService;
+import com.example.data.model.YtsVideo;
+import com.example.data.repository.YtsRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

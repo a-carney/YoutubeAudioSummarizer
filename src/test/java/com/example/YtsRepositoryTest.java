@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.data.model.YtsVideo;
+import com.example.data.repository.YtsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
