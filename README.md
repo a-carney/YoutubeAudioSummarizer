@@ -1,5 +1,7 @@
 # Youtube Video Summarizer
 
+***Note: Application Still in Progress***
+
 A Spring Boot Application for Summarizing Youtube Videos
 
 ## Features
