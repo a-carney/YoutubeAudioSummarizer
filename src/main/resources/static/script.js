@@ -8,7 +8,7 @@ const YT = {
 };
 
 const API = {
-    url: '/api/summary',
+    url: '/ytsummarizer/api/summary',
     timeout: 60000
 };
 
